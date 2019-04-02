@@ -7,7 +7,24 @@ using System.Threading.Tasks;
 namespace Lab12
 {
     class Program
-    {
+    { 
+        public float SrednaVrednost(int []niza)
+        {
+            int suma = 0;
+            int max = niza[0];
+            int min = niza[0];
+            for(int i=0;i<niza.Length;i++)
+            {
+                suma += niza[i];
+                if (niza[i] > max)
+                    niza[i] = max;
+                if (niza[i] < min)
+                    niza[i] = min;
+            }
+            Console.WriteLine(max);
+            Console.WriteLine(min);
+            Console.WriteLine((float)suma / niza.Length);
+        }
         static void Main(string[] args)
         {
             int N;
@@ -20,7 +37,7 @@ namespace Lab12
                 int[] niza = new int[N];
                 for (int i = 0; i < N; i++)
                 {
-                    
+
                     niza[i] = random.Next(1, 1000);
                 }
                 Console.WriteLine(niza.Average());
@@ -28,23 +45,25 @@ namespace Lab12
                 Console.WriteLine(niza.Min());
                 Console.ReadKey();
             }
-            else if((Convert.ToInt64(Console.ReadLine())) == 2)
+            else if ((Convert.ToInt64(Console.ReadLine())) == 2)
             {
-                
+                SrednaVrednost(niza);
                 int[] niza = new int[N];
                 for (int i = 0; i < N; i++)
                 {
-                   
+
                     niza[i] = Convert.ToInt16(Console.ReadLine());
                 }
                 Console.WriteLine(niza.Average());
                 Console.WriteLine(niza.Max());
                 Console.WriteLine(niza.Min());
-                Console.ReadKey();
-                else{
-                    Console.WriteLine("Vnesete 1 ili 2");
-                }
+
+            }
+            else
+            {
+                Console.WriteLine("Vnesete 1 ili 2");
+            }
             }
         }
     }
-}
+
